@@ -1,17 +1,14 @@
 #include "PilaDinamica.h"
 
-void crearPila (Pila* pp)
-{
+void crearPila(Pila* pp) {
     *pp = NULL;
 }
 
-bool pilaVacia (const Pila* pp)
-{
+bool pilaVacia(const Pila* pp) {
     return *pp == NULL;
 }
 
-bool pilaLlena (const Pila* pp, size_t tamElem)
-{
+bool pilaLlena(const Pila* pp, size_t tamElem) {
     void* nodo = malloc(sizeof(Nodo));
     void* elem = malloc(tamElem);
     free(nodo);
@@ -19,19 +16,17 @@ bool pilaLlena (const Pila* pp, size_t tamElem)
     return !nodo || !elem;
 }
 
-bool apilar (Pila* pp, const void* elem, size_t tamElem)
-{
+bool apilar(Pila* pp, const void* elem, size_t tamElem) {
     Nodo* nue = crearNodo(elem, tamElem);
-    if(!nue)
+    if (!nue)
         return false;
     nue->sig = *pp;
     *pp = nue;
     return true;
 }
 
-bool desapilar (Pila* pp, void* elem, size_t tamElem)
-{
-    if(!*pp)
+bool desapilar(Pila* pp, void* elem, size_t tamElem) {
+    if (!*pp)
         return false;
     Nodo* nae = *pp;
     *pp = nae->sig;
@@ -39,20 +34,17 @@ bool desapilar (Pila* pp, void* elem, size_t tamElem)
     return true;
 }
 
-bool verTope (const Pila* pp, void* elem, size_t tamElem)
-{
-    if(!*pp)
+bool verTope(const Pila* pp, void* elem, size_t tamElem) {
+    if (!*pp)
         return false;
     Nodo* tope = *pp;
     memcpy(elem, tope->elem, MINIMO(tamElem, tope->tamElem));
     return true;
 }
 
-void vaciarPila (Pila* pp)
-{
+void vaciarPila(Pila* pp) {
     Nodo* nae;
-    while(*pp)
-    {
+    while (*pp) {
         nae = *pp;
         *pp = nae->sig;
         free(nae->elem);
@@ -60,19 +52,16 @@ void vaciarPila (Pila* pp)
     }
 }
 
-void destruirNodo (Nodo* nae, void* elem, size_t tamElem)
-{
+void destruirNodo(Nodo* nae, void* elem, size_t tamElem) {
     memcpy(elem, nae->elem, MINIMO(tamElem, nae->tamElem));
     free(nae->elem);
     free(nae);
 }
 
-Nodo* crearNodo (const void* elem, size_t tamElem)
-{
+Nodo* crearNodo(const void* elem, size_t tamElem) {
     Nodo* nue = (Nodo*)malloc(sizeof(Nodo));
     void* elemNodo = malloc(tamElem);
-    if(!nue || !elemNodo)
-    {
+    if (!nue || !elemNodo) {
         free(nue);
         free(elemNodo);
         return NULL;

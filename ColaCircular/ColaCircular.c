@@ -1,17 +1,14 @@
 #include "ColaCircular.h"
 
-void crearCola (Cola* pc)
-{
+void crearCola(Cola* pc) {
     *pc = NULL;
 }
 
-bool colaVacia (const Cola* pc)
-{
+bool colaVacia(const Cola* pc) {
     return !*pc;
 }
 
-bool colaLlena (const Cola* pc, size_t tamElem)
-{
+bool colaLlena(const Cola* pc, size_t tamElem) {
     void* nue = malloc(sizeof(Nodo));
     void* elem = malloc(tamElem);
     free(nue);
@@ -19,28 +16,24 @@ bool colaLlena (const Cola* pc, size_t tamElem)
     return !nue || !elem;
 }
 
-bool encolar (Cola* pc, const void* elem, size_t tamElem)
-{
+bool encolar(Cola* pc, const void* elem, size_t tamElem) {
     Nodo* nue = crearNodo(elem, tamElem);
-    if(!nue)
+    if (!nue)
         return false;
-    if(*pc)
-    {
+    if (*pc) {
         nue->sig = (*pc)->sig;
         (*pc)->sig = nue;
-    }
-    else
+    } else
         nue->sig = nue;
     *pc = nue;
     return true;
 }
 
-bool desencolar (Cola* pc, void* elem, size_t tamElem)
-{
-    if(!*pc)
+bool desencolar(Cola* pc, void* elem, size_t tamElem) {
+    if (!*pc)
         return false;
     Nodo* nae = (*pc)->sig;
-    if(*pc == nae)
+    if (*pc == nae)
         *pc = NULL;
     else
         (*pc)->sig = nae->sig;
@@ -48,13 +41,11 @@ bool desencolar (Cola* pc, void* elem, size_t tamElem)
     return true;
 }
 
-void vaciarCola (Cola* pc)
-{
+void vaciarCola(Cola* pc) {
     Nodo* nae;
-    while(*pc)
-    {
+    while (*pc) {
         nae = (*pc)->sig;
-        if(nae == nae->sig)
+        if (nae == nae->sig)
             *pc = NULL;
         else
             (*pc)->sig = nae->sig;
@@ -63,21 +54,18 @@ void vaciarCola (Cola* pc)
     }
 }
 
-bool frenteDeCola (const Cola* pc, void* elem, size_t tamElem)
-{
-    if(!*pc)
+bool frenteDeCola(const Cola* pc, void* elem, size_t tamElem) {
+    if (!*pc)
         return false;
     Nodo* frente = (*pc)->sig;
     memcpy(elem, frente->elem, MINIMO(tamElem, frente->tamElem));
     return true;
 }
 
-Nodo* crearNodo (const void* elem, size_t tamElem)
-{
+Nodo* crearNodo(const void* elem, size_t tamElem) {
     Nodo* nue = (Nodo*)malloc(sizeof(Nodo));
     void* elemNodo = malloc(tamElem);
-    if(!nue || !elemNodo)
-    {
+    if (!nue || !elemNodo) {
         free(nue);
         free(elemNodo);
         return NULL;
@@ -89,8 +77,7 @@ Nodo* crearNodo (const void* elem, size_t tamElem)
     return nue;
 }
 
-void destruirNodo (Nodo* nae, void* elem, size_t tamElem)
-{
+void destruirNodo(Nodo* nae, void* elem, size_t tamElem) {
     memcpy(elem, nae->elem, MINIMO(tamElem, nae->tamElem));
     free(nae->elem);
     free(nae);

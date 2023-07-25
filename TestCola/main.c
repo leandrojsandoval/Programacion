@@ -2,14 +2,13 @@
 #include <stdlib.h>
 #include <time.h>
 
-//#include "../ColaDinamica/ColaDinamica.h"
-//#include "../ColaEstatica/ColaEstatica.h"
+// #include "../ColaDinamica/ColaDinamica.h"
+// #include "../ColaEstatica/ColaEstatica.h"
 #include "../ColaCircular/ColaCircular.h"
 
 #define TAM_CLIENTES 10
 
-typedef struct
-{
+typedef struct {
     unsigned dni;
     char nombre[50];
     char apellido[50];
@@ -20,8 +19,7 @@ int tiempoAleatorioDeEntrada();
 int generarValorAleatorio(int limInf, int limSup);
 void mostrarCliente(const Cliente* cliente);
 
-int main()
-{
+int main() {
     system("chcp 1252 >nul");
     srand(time(NULL));
 
@@ -29,18 +27,18 @@ int main()
     crearCola(&colaClientes);
 
     Cliente vClientes[TAM_CLIENTES] =
-    {
-        {12345678,"Francisco","Fern�ndez"},
-        {11111111,"Milagros","Ag�ero"},
-        {78901234,"Martin","G�mez"},
-        {44444444,"Florencia","G�mez"},
-        {55555555,"Sofia","Morales"},
-        {56789012,"Lautaro","Guti�rrez"},
-        {34567890,"M�nica","Mart�nez"},
-        {22222222,"Camila","Gonz�lez"},
-        {33333333,"Pedro","Fern�ndez"},
-        {90123456,"Juan","V�squez"},
-    };
+        {
+            {12345678, "Francisco", "Fernandez"},
+            {11111111, "Milagros", "Aguero"},
+            {78901234, "Martin", "Gomez"},
+            {44444444, "Florencia", "Gomez"},
+            {55555555, "Sofia", "Morales"},
+            {56789012, "Lautaro", "Gutierrez"},
+            {34567890, "Monica", "Martinez"},
+            {22222222, "Camila", "Gonzalez"},
+            {33333333, "Pedro", "Fernandez"},
+            {90123456, "Juan", "Vasquez"},
+        };
 
     int cantVecesColaVacia = 0;
     Cliente cliente;
@@ -48,26 +46,22 @@ int main()
     int minutosEntrada = tiempoAleatorioDeEntrada();
     int minutosSalida = tiempoAleatorioDeSalida();
 
-    while(cantVecesColaVacia < 5)
-    {
-        cliente = vClientes[generarValorAleatorio(0,9)];
+    while (cantVecesColaVacia < 5) {
+        cliente = vClientes[generarValorAleatorio(0, 9)];
         encolar(&colaClientes, &cliente, sizeof(Cliente));
         puts("Ingreso el cliente:");
         mostrarCliente(&cliente);
-        while(!colaVacia(&colaClientes))
-        {
-            if(minutosEntrada == 0)
-            {
-                cliente = vClientes[generarValorAleatorio(0,TAM_CLIENTES - 1)];
+        while (!colaVacia(&colaClientes)) {
+            if (minutosEntrada == 0) {
+                cliente = vClientes[generarValorAleatorio(0, TAM_CLIENTES - 1)];
                 encolar(&colaClientes, &cliente, sizeof(Cliente));
                 puts("Ingreso el cliente:");
                 mostrarCliente(&cliente);
                 minutosEntrada = tiempoAleatorioDeEntrada();
             }
-            if(minutosSalida == 0)
-            {
+            if (minutosSalida == 0) {
                 desencolar(&colaClientes, &cliente, sizeof(Cliente));
-                puts("Sali� el cliente:");
+                puts("Salio el cliente:");
                 mostrarCliente(&cliente);
                 minutosSalida = tiempoAleatorioDeSalida();
             }
@@ -79,27 +73,24 @@ int main()
     return 0;
 }
 
-void mostrarCliente(const Cliente* cliente)
-{
+void mostrarCliente(const Cliente* cliente) {
     printf("DNI: %d\n", cliente->dni);
     printf("Nombre: %s\n", cliente->nombre);
     printf("Apellido: %s\n", cliente->apellido);
     putchar('\n');
 }
 
-int tiempoAleatorioDeSalida()
-{
+int tiempoAleatorioDeSalida() {
     int numeroRandom = generarValorAleatorio(1, 3);
-    return numeroRandom == 2? 5 : numeroRandom;
+    return numeroRandom == 2 ? 5 : numeroRandom;
 }
 
-int tiempoAleatorioDeEntrada()
-{
+int tiempoAleatorioDeEntrada() {
     int numeroRandom = generarValorAleatorio(1, 3);
-    return numeroRandom == 2? 5 : numeroRandom == 3? 9 : 1;
+    return numeroRandom == 2 ? 5 : numeroRandom == 3 ? 9
+                                                     : 1;
 }
 
-int generarValorAleatorio(int limInf, int limSup)
-{
-    return rand () % (limSup - limInf + 1) + limInf;
+int generarValorAleatorio(int limInf, int limSup) {
+    return rand() % (limSup - limInf + 1) + limInf;
 }

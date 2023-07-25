@@ -1,7 +1,6 @@
 #include "Matematica.h"
 
-int menuMatematicas()
-{
+int menuMatematicas() {
     int opcion;
     printf("\nMenu Principal - Funciones Matematicas\n");
     printf("---------------------------------------\n");
@@ -19,12 +18,10 @@ int menuMatematicas()
     printf("\n12) Suma primeros N numeroes naturales pares menores que N\n");
     printf("\n13) Primo\n");
     printf("\n0) Salir\n");
-    do
-    {
+    do {
         printf("\nIngrese una opcion: ");
-        scanf("%d",&opcion);
-    }
-    while(opcion<0||opcion>13);
+        scanf("%d", &opcion);
+    } while (opcion < 0 || opcion > 13);
     return opcion;
 }
 
@@ -37,20 +34,18 @@ int menuMatematicas()
 Ejemplo: 5! = 5*4*3*2*1 = 120
 Desarrollar una función para calcular el factorial de un entero.*/
 
-double factorial (int numero)
-{
+double factorial(int numero) {
     int i;
     double resultado = 1;
-    if(numero<0)
+    if (numero < 0)
         return 0;
-    for (i=2; i<=numero; i++)
+    for (i = 2; i <= numero; i++)
         resultado *= i;
     return resultado;
 }
 
-double factorialRecursivo (int numero)
-{
-    return !numero? 1 : numero*factorialRecursivo(numero-1);
+double factorialRecursivo(int numero) {
+    return !numero ? 1 : numero * factorialRecursivo(numero - 1);
 }
 
 /*Ejercicio 2: Dados dos números enteros m y n (m >= n y n>= 0), el número combinatorio se
@@ -58,12 +53,10 @@ calcula de la siguiente manera:
     m(n) = m ! / (n! * (m−n)!)
 Desarrollar una función para calcular el combinatorio m sobre n.*/
 
-int combinatoria (int m,int n)
-{
+int combinatoria(int m, int n) {
     int res;
-    if (m>=n && n>=0)
-    {
-        res = factorial(m)/(factorial(n)*factorial(m-n));
+    if (m >= n && n >= 0) {
+        res = factorial(m) / (factorial(n) * factorial(m - n));
         return res;
     }
     return -1;
@@ -75,13 +68,11 @@ la suma de los términos de la serie:
 El proceso termina cuando se obtiene un término calculado que sea menor que la tolerancia TOL.
 Desarrollar una función para calcular el e^x, dados X y TOL.*/
 
-double eALaX (int exp, double tolerancia)
-{
+double eALaX(int exp, double tolerancia) {
     double termino = 1, resultado = 1;
     int i = 1;
-    while(termino > tolerancia)
-    {
-        termino *= (double)exp/i;
+    while (termino > tolerancia) {
+        termino *= (double)exp / i;
         resultado += termino;
         i++;
     }
@@ -94,15 +85,12 @@ double eALaX (int exp, double tolerancia)
 El proceso de cálculo se da por terminado cuando la diferencia entre dos términos sucesivos es menor que una cota fijada de antemano.
 Desarrollar una función para calcular la raíz cuadrada de X con una tolerancia TOL.*/
 
-float raizCuadrada (int numero,double tolerancia)
-{
+float raizCuadrada(int numero, double tolerancia) {
     float resultadoAnterior = 1, resultadoActual = 1;
-    do
-    {
+    do {
         resultadoAnterior = resultadoActual;
-        resultadoActual = 0.5*(resultadoAnterior + (numero/resultadoAnterior));
-    }
-    while(fabs(resultadoAnterior-resultadoActual) >= tolerancia);
+        resultadoActual = 0.5 * (resultadoAnterior + (numero / resultadoAnterior));
+    } while (fabs(resultadoAnterior - resultadoActual) >= tolerancia);
     return resultadoActual;
 }
 
@@ -111,16 +99,13 @@ dos primeros términos son 1
     Serie: 1    1   2   3   5   8   13  21  34 ...
 Desarrollar una función para determinar si un entero pertenece a la serie de Fibonacci.*/
 
-bool fibonacci (int numero)
-{
-    int anteultimoNumero = 0, ultimoNumero = 1,siguienteNumero = 1;
-    if(numero <= 0)
-    {
+bool fibonacci(int numero) {
+    int anteultimoNumero = 0, ultimoNumero = 1, siguienteNumero = 1;
+    if (numero <= 0) {
         return 0;
     }
-    while(numero > siguienteNumero)
-    {
-        siguienteNumero = anteultimoNumero+ultimoNumero;
+    while (numero > siguienteNumero) {
+        siguienteNumero = anteultimoNumero + ultimoNumero;
         anteultimoNumero = ultimoNumero;
         ultimoNumero = siguienteNumero;
     }
@@ -133,18 +118,15 @@ de los términos de la serie:
 Este proceso continúa mientras el termino calculado (en valor absoluto) sea mayor que la tolerancia.
 Desarrollar una función que obtenga el seno de X con tolerancia TOL, utilizando dicha serie.*/
 
-double seno (int numero, double tolerancia)
-{
+double seno(int numero, double tolerancia) {
     int i = 1, signo = 1;
     double termino, resultado = 0;
-    do
-    {
-        termino = (signo)*(pow(numero,i)/factorial(i));
+    do {
+        termino = (signo) * (pow(numero, i) / factorial(i));
         signo *= -1;
         i += 2;
         resultado += termino;
-    }
-    while(fabs(termino) > tolerancia);
+    } while (fabs(termino) > tolerancia);
     return resultado;
 }
 
@@ -159,27 +141,24 @@ sus divisores positivos menores que él sea igual, menor o mayor que él. Por ej
 Desarrollar una función que determine si un número natural es perfecto, deficiente
 o abundante.*/
 
-int clasificarNumero (int numero)
-{
-    if(numero <= 0)
+int clasificarNumero(int numero) {
+    if (numero <= 0)
         return NUMERO_SIN_CLASIFICACION;
     int suma = 0;
-    for(int i = 1; i < numero; i++)
-    {
-        if(numero % i == 0)
+    for (int i = 1; i < numero; i++) {
+        if (numero % i == 0)
             suma += i;
     }
-    return suma == numero ? NUMERO_PERFECTO : suma < numero ? NUMERO_DEFICIENTE : NUMERO_ABUNDANTE;
+    return suma == numero ? NUMERO_PERFECTO : suma < numero ? NUMERO_DEFICIENTE
+                                                            : NUMERO_ABUNDANTE;
 }
 
 /*Ejercicio 8: Dados dos números naturales (incluido el cero), obtener su producto por sumas
 sucesivas.*/
 
-int sumaSucesiva (int numero1, int numero2)
-{
+int sumaSucesiva(int numero1, int numero2) {
     int i, resultado = 0;
-    for(i=0; i<numero2; i++)
-    {
+    for (i = 0; i < numero2; i++) {
         resultado += numero1;
     }
     return resultado;
@@ -188,30 +167,25 @@ int sumaSucesiva (int numero1, int numero2)
 /*Ejercicio 9: Dados dos números naturales A y B, desarrollar una función para obtener el cociente
 entero A/B y el resto. (A puede ser 0; B, no).*/
 
-void cocienteResto (int numero1, int numero2)
-{
-    if(numero2 <= 0 || numero1 < 0)
-    {
+void cocienteResto(int numero1, int numero2) {
+    if (numero2 <= 0 || numero1 < 0) {
         printf("\nNo es posible realizar la division\n");
         return;
     }
     int i = 0, resto = numero1;
-    do
-    {
+    do {
         resto -= numero2;
         i++;
-    }
-    while(numero2 < resto);
-    printf("\nEl cociente de la division entre %d y %d es %d, y su resto es %d",numero1,numero2,i,resto);
+    } while (numero2 < resto);
+    printf("\nEl cociente de la division entre %d y %d es %d, y su resto es %d", numero1, numero2, i, resto);
 }
 
 /*Ejercicio 10: Construir un programa que lea un número natural N y calcule la suma de los primeros
 N números naturales.*/
 
-int sumaPrimerosNumeros (int numero)
-{
+int sumaPrimerosNumeros(int numero) {
     int i, suma = 0;
-    for(i = 1; i <= numero; i++)
+    for (i = 1; i <= numero; i++)
         suma += i;
     return suma;
 }
@@ -219,11 +193,10 @@ int sumaPrimerosNumeros (int numero)
 /*Ejercicio 11: Construir un programa que lea un número natural N y calcule la suma de los primeros
 N números pares.*/
 
-int sumaPrimerosNumerosPares (int numero)
-{
+int sumaPrimerosNumerosPares(int numero) {
     int suma = 0;
-    for(int i = 1; i <= numero; i++)
-        if(i % 2 == 0)
+    for (int i = 1; i <= numero; i++)
+        if (i % 2 == 0)
             suma += i;
     return suma;
 }
@@ -231,24 +204,20 @@ int sumaPrimerosNumerosPares (int numero)
 /*Ejercicio 12: Construir un programa que lea un número natural N y calcule la suma de los números
 pares menores que N.*/
 
-int sumaPrimerosNumerosParesMenores (int numero)
-{
+int sumaPrimerosNumerosParesMenores(int numero) {
     int suma = 0;
-    for(int i = 1; i < numero; i++)
-        if(i % 2 == 0)
+    for (int i = 1; i < numero; i++)
+        if (i % 2 == 0)
             suma += i;
     return suma;
 }
 
 /*Ejercicio 13: Desarrollar una función que determine si un número natural es primo.*/
 
-bool esPrimo (int numero)
-{
+bool esPrimo(int numero) {
     int divisor = numero, contador = 0;
-    while(divisor > 0)
-    {
-        if(numero%divisor == 0)
-        {
+    while (divisor > 0) {
+        if (numero % divisor == 0) {
             contador++;
         }
         divisor--;
@@ -269,13 +238,10 @@ Por ejemplo para: 35 x 8
     2   128
     1   256*/
 
-int productoMetodoRuso (int numero1, int numero2)
-{
+int productoMetodoRuso(int numero1, int numero2) {
     int resultado = 0;
-    while(numero1 >= 1)
-    {
-        if(numero1%2 != 0)
-        {
+    while (numero1 >= 1) {
+        if (numero1 % 2 != 0) {
             resultado += numero2;
         }
         numero1 /= 2;
@@ -285,7 +251,6 @@ int productoMetodoRuso (int numero1, int numero2)
 }
 
 /*Ejercicio 21: Desarrollar una funcion para obtener la parte entera de un numero real*/
-int parteEnteraDeUnReal (double numero)
-{
+int parteEnteraDeUnReal(double numero) {
     return numero - (numero - (int)numero);
 }

@@ -1,7 +1,6 @@
 #include "Matriz.h"
 
-int main()
-{
+int main() {
     /*int matriz[][TAM]= {{}},auxMatriz[][TAM]= {{}},matrizProducto[][TAM]= {{}};
     int bandera=0,fila=0,columna=0,filaProducto,columnaProducto,opcion=menuMatrices();
     while(opcion)           //Salgo del while cuando opcion sea 0
@@ -302,17 +301,17 @@ int main()
         opcion=menuMatrices();
     }*/
 
-    int fila,columna;
+    int fila, columna;
     printf("\nIngrese la cantidad de la filas: ");
-    scanf("%d",&fila);
+    scanf("%d", &fila);
     printf("\nIngrese la cantidad de columnas: ");
-    scanf("%d",&columna);
+    scanf("%d", &columna);
     /*Casteamos lo que devuelve la funcion al tipo de dato a usar*/
-    int* pMatriz = (int*) reservarMemMatriz(fila,columna,sizeof(int));
-    printf("\n%p\n",(int*)pMatriz);
-    printf("\n%p\n",(int*)pMatriz+(fila*columna));
+    int* pMatriz = (int*)reservarMemMatriz(fila, columna, sizeof(int));
+    printf("\n%p\n", (int*)pMatriz);
+    printf("\n%p\n", (int*)pMatriz + (fila * columna));
     /*Para liberar tambien hay que castear a generico*/
-    liberarMatriz((void*)pMatriz,fila);
+    liberarMatriz((void*)pMatriz, fila);
 
     return 0;
 }

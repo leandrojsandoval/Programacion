@@ -1,8 +1,7 @@
-#include "Vector.h"
 #include "../Generico/Generico.h"
+#include "Vector.h"
 
-int main()
-{
+int main() {
     system("chcp 1252 >nul");
     srand(time(NULL));
 
@@ -12,14 +11,14 @@ int main()
 
     puts("Ingrese la cantidad de elementos: ");
     fflush(stdin);
-    scanf("%d",&cantElementos);
+    scanf("%d", &cantElementos);
 
     resBool = cargarVectorEnterosConRand(vector, cantElementos, CAPACIDAD);
 
-    if(resBool == false)
-        puts("\nLa cantidad de elementos ingresada supera el tamaño maximo\n");
+    if (resBool == false)
+        puts("\nLa cantidad de elementos ingresada supera el tamaï¿½o maximo\n");
 
-    ///Ordenamiento insercion
+    /// Ordenamiento insercion
 
     puts("Vector antes:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);
@@ -29,7 +28,7 @@ int main()
     puts("Vector despues:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);
 
-    ///Insertar ordenado
+    /// Insertar ordenado
 
     /*puts("Ingrese un valor a insertar:");
     fflush(stdin);
@@ -69,7 +68,7 @@ int main()
     puts("Vector despues:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);*/
 
-    ///Insertar por pos desordenado
+    /// Insertar por pos desordenado
 
     /*puts("Vector antes:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);
@@ -85,7 +84,7 @@ int main()
     switch(resInt)
     {
     case VECTOR_LLENO:
-        printf("La cantidad de elementos (%d) supera el tamaño maximo (%d)\n",cantElementos,TAM);
+        printf("La cantidad de elementos (%d) supera el tamaï¿½o maximo (%d)\n",cantElementos,TAM);
         break;
     case ERROR_POS:
         printf("La posicion %d supera la cantidad de elementos (%d)\n",posicion,cantElementos);
@@ -98,7 +97,7 @@ int main()
     puts("Vector despues:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);*/
 
-    ///Eliminar por pos desordenado
+    /// Eliminar por pos desordenado
 
     /*puts("Vector antes:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);
@@ -116,7 +115,7 @@ int main()
     puts("Vector despues:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);*/
 
-    ///Eliminar primera aparicion
+    /// Eliminar primera aparicion
 
     /*puts("Vector antes:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);
@@ -134,7 +133,7 @@ int main()
     puts("Vector despues:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);*/
 
-    ///Eliminar todas las apariciones
+    /// Eliminar todas las apariciones
 
     /*puts("Vector antes:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);
@@ -147,7 +146,7 @@ int main()
     puts("Vector despues:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);*/
 
-    ///Ordenar ascendente
+    /// Ordenar ascendente
 
     /*puts("Vector antes:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);
@@ -157,7 +156,7 @@ int main()
     puts("Vector despues:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);*/
 
-    ///Ordenar descendente
+    /// Ordenar descendente
 
     /*puts("Vector antes:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);
@@ -167,7 +166,7 @@ int main()
     puts("Vector despues:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);*/
 
-    ///Eliminar duplicados
+    /// Eliminar duplicados
 
     /*puts("Vector antes:");
     mostrarVector(vector, cantElementos, sizeof(int), mostarDatoInt);

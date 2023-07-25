@@ -1,7 +1,6 @@
 #include "Archivos.h"
 
-int main()
-{
+int main() {
     system("chcp 1252 > nul");
     int res;
     /*********************************** Actualizacion de de archivos ***********************************/
@@ -117,32 +116,32 @@ int main()
     /*********************************** Ejercicio 13 ***********************************/
 
     res = crearArchivoBinEmpleados(PATH_EMP_BIN);
-    if(res != TODO_OK)
+    if (res != TODO_OK)
         return res;
 
     res = crearArchivoBinEstudiantes(PATH_EST_BIN);
-    if(res != TODO_OK)
+    if (res != TODO_OK)
         return res;
 
     puts("Archivo Empleados:");
     res = leerArchivoBinEmpleados(PATH_EMP_BIN);
-    if(res != TODO_OK)
+    if (res != TODO_OK)
         return res;
 
     puts("\nArchivo Estudiantes:");
     res = leerArchivoBinEstudiantes(PATH_EST_BIN);
-    if(res != TODO_OK)
+    if (res != TODO_OK)
         return res;
 
     res = actualizarEmpleados(PATH_EMP_BIN, PATH_EST_BIN);
-    if(res != TODO_OK)
+    if (res != TODO_OK)
         return res;
 
     puts("\nEmpleados actualizados:");
 
     puts("Archivo Empleados:");
     res = leerArchivoBinEmpleados(PATH_EMP_BIN);
-    if(res != TODO_OK)
+    if (res != TODO_OK)
         return res;
 
     return TODO_OK;

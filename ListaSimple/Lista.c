@@ -1,12 +1,10 @@
 #include "Lista.h"
 
-void crearLista (Lista* pl)
-{
+void crearLista(Lista* pl) {
     *pl = NULL;
 }
 
-bool listaLlena (const Lista* pl, size_t tamElem)
-{
+bool listaLlena(const Lista* pl, size_t tamElem) {
     void* nue = malloc(sizeof(Nodo));
     void* elem = malloc(tamElem);
     free(nue);
@@ -14,47 +12,42 @@ bool listaLlena (const Lista* pl, size_t tamElem)
     return !nue || !elem;
 }
 
-bool listaVacia (const Lista* pl)
-{
+bool listaVacia(const Lista* pl) {
     return !*pl;
 }
 
-bool insertarPrimeroEnLista (Lista* pl, const void* elem, size_t tamElem)
-{
+bool insertarPrimeroEnLista(Lista* pl, const void* elem, size_t tamElem) {
     Nodo* nue = crearNodo(elem, tamElem);
-    if(!nue)
+    if (!nue)
         return false;
     nue->sig = *pl;
     *pl = nue;
     return true;
 }
 
-bool insertarUltimoEnLista(Lista* pl, const void* elem, size_t tamElem)
-{
-    while(*pl)
+bool insertarUltimoEnLista(Lista* pl, const void* elem, size_t tamElem) {
+    while (*pl)
         pl = &(*pl)->sig;
     Nodo* nue = crearNodo(elem, tamElem);
-    if(!nue)
+    if (!nue)
         return false;
     *pl = nue;
     return true;
 }
 
-int insertarOActualizarEnListaOrd (Lista* pl, const void* elem, size_t tamElem, Cmp cmp, Actualizar actualizar)
-{
-    while(*pl && cmp(elem, (*pl)->elem) > 0)
+int insertarOActualizarEnListaOrd(Lista* pl, const void* elem, size_t tamElem, Cmp cmp, Actualizar actualizar) {
+    while (*pl && cmp(elem, (*pl)->elem) > 0)
         pl = &(*pl)->sig;
 
-    if(*pl && cmp(elem, (*pl)->elem) == 0)
-    {
-        if(actualizar)
+    if (*pl && cmp(elem, (*pl)->elem) == 0) {
+        if (actualizar)
             actualizar((*pl)->elem, elem);
         return DUPLICADO;
     }
 
     Nodo* nue = crearNodo(elem, tamElem);
 
-    if(!nue)
+    if (!nue)
         return SIN_MEMORIA;
 
     nue->sig = *pl;
@@ -63,9 +56,8 @@ int insertarOActualizarEnListaOrd (Lista* pl, const void* elem, size_t tamElem, 
     return TODO_OK;
 }
 
-bool eliminarPrimeroDeLista (Lista* pl, void* elem, size_t tamElem)
-{
-    if(!*pl)
+bool eliminarPrimeroDeLista(Lista* pl, void* elem, size_t tamElem) {
+    if (!*pl)
         return false;
     Nodo* nae = *pl;
     *pl = nae->sig;
@@ -73,11 +65,10 @@ bool eliminarPrimeroDeLista (Lista* pl, void* elem, size_t tamElem)
     return true;
 }
 
-bool eliminarUltimoDeLista (Lista* pl, void* elem, size_t tamElem)
-{
-    if(!*pl)
+bool eliminarUltimoDeLista(Lista* pl, void* elem, size_t tamElem) {
+    if (!*pl)
         return false;
-    while(*pl)
+    while (*pl)
         pl = &(*pl)->sig;
     Nodo* nae = *pl;
     *pl = nae->sig;
@@ -85,11 +76,10 @@ bool eliminarUltimoDeLista (Lista* pl, void* elem, size_t tamElem)
     return true;
 }
 
-bool eliminarDeListaOrd (Lista* pl, void* elem, size_t tamElem, Cmp cmp)
-{
-    while(*pl && cmp(elem, (*pl)->elem) > 0)
+bool eliminarDeListaOrd(Lista* pl, void* elem, size_t tamElem, Cmp cmp) {
+    while (*pl && cmp(elem, (*pl)->elem) > 0)
         pl = &(*pl)->sig;
-    if(!*pl || cmp(elem, (*pl)->elem) < 0)
+    if (!*pl || cmp(elem, (*pl)->elem) < 0)
         return false;
     Nodo* nae = *pl;
     *pl = nae->sig;
@@ -97,11 +87,10 @@ bool eliminarDeListaOrd (Lista* pl, void* elem, size_t tamElem, Cmp cmp)
     return true;
 }
 
-bool eliminarDeListaDes (Lista* pl, void* elem, size_t tamElem, Cmp cmp)
-{
-    while(*pl && cmp(elem, (*pl)->elem) != 0)
+bool eliminarDeListaDes(Lista* pl, void* elem, size_t tamElem, Cmp cmp) {
+    while (*pl && cmp(elem, (*pl)->elem) != 0)
         pl = &(*pl)->sig;
-    if(!*pl)
+    if (!*pl)
         return false;
     Nodo* nae = *pl;
     *pl = nae->sig;
@@ -109,18 +98,15 @@ bool eliminarDeListaDes (Lista* pl, void* elem, size_t tamElem, Cmp cmp)
     return true;
 }
 
-bool eliminarDuplicadosDeListaOrd (Lista* pl, Cmp cmp)
-{
-    if(!*pl)
+bool eliminarDuplicadosDeListaOrd(Lista* pl, Cmp cmp) {
+    if (!*pl)
         return false;
     Nodo* nae;
 
     Lista* plDup = &(*pl)->sig;
 
-    while(*pl)
-    {
-        while(*plDup && !cmp((*pl)->elem, (*plDup)->elem))
-        {
+    while (*pl) {
+        while (*plDup && !cmp((*pl)->elem, (*plDup)->elem)) {
             nae = *plDup;
             *plDup = nae->sig;
             free(nae->elem);
@@ -133,26 +119,21 @@ bool eliminarDuplicadosDeListaOrd (Lista* pl, Cmp cmp)
     return true;
 }
 
-bool eliminarDuplicadosDeListaDes (Lista* pl, Cmp cmp)
-{
-    if(!*pl)
+bool eliminarDuplicadosDeListaDes(Lista* pl, Cmp cmp) {
+    if (!*pl)
         return false;
 
     Nodo* nae;
 
     Lista* plDup = &(*pl)->sig;
-    while(*pl)
-    {
-        while(*plDup)
-        {
-            if(!cmp((*pl)->elem, (*plDup)->elem))
-            {
+    while (*pl) {
+        while (*plDup) {
+            if (!cmp((*pl)->elem, (*plDup)->elem)) {
                 nae = *plDup;
                 *plDup = nae->sig;
                 free(nae->elem);
                 free(nae);
-            }
-            else
+            } else
                 plDup = &(*plDup)->sig;
         }
         pl = &(*pl)->sig;
@@ -162,21 +143,18 @@ bool eliminarDuplicadosDeListaDes (Lista* pl, Cmp cmp)
     return true;
 }
 
-bool buscarElementoEnLista (Lista* pl, void* elem, size_t tamElem, Cmp cmp)
-{
-    while(*pl && (cmp(elem, (*pl)->elem)) != 0)
+bool buscarElementoEnLista(Lista* pl, void* elem, size_t tamElem, Cmp cmp) {
+    while (*pl && (cmp(elem, (*pl)->elem)) != 0)
         pl = &(*pl)->sig;
-    if(!*pl)
+    if (!*pl)
         return false;
     memcpy(elem, (*pl)->elem, MINIMO(tamElem, (*pl)->tamElem));
     return true;
 }
 
-void vaciarLista (Lista* pl)
-{
+void vaciarLista(Lista* pl) {
     Nodo* nae;
-    while(*pl)
-    {
+    while (*pl) {
         nae = *pl;
         *pl = nae->sig;
         free(nae->elem);
@@ -184,29 +162,25 @@ void vaciarLista (Lista* pl)
     }
 }
 
-void recorrerLista (const Lista* pl, Accion accion, void* datosAccion)
-{
-    while(*pl)
-    {
+void recorrerLista(const Lista* pl, Accion accion, void* datosAccion) {
+    while (*pl) {
         accion((*pl)->elem, datosAccion);
         pl = &(*pl)->sig;
     }
 }
 
-void ordenarLista (Lista* pl, Cmp cmp, int sentidoOrdenamiento)
-{
+void ordenarLista(Lista* pl, Cmp cmp, int sentidoOrdenamiento) {
     Lista lOrd = NULL;
     Lista* plOrd = &lOrd;
     Nodo* nodo;
 
-    while(*pl)
-    {
+    while (*pl) {
         nodo = *pl;
         *pl = nodo->sig;
 
         plOrd = &lOrd;
 
-        while(*plOrd && (sentidoOrdenamiento * cmp(nodo->elem, (*plOrd)->elem)) >= 0)
+        while (*plOrd && (sentidoOrdenamiento * cmp(nodo->elem, (*plOrd)->elem)) >= 0)
             plOrd = &(*plOrd)->sig;
 
         nodo->sig = *plOrd;
@@ -216,12 +190,10 @@ void ordenarLista (Lista* pl, Cmp cmp, int sentidoOrdenamiento)
     *pl = lOrd;
 }
 
-Nodo* crearNodo (const void* elem, size_t tamElem)
-{
+Nodo* crearNodo(const void* elem, size_t tamElem) {
     Nodo* nue = (Nodo*)malloc(sizeof(Nodo));
     void* elemNodo = malloc(tamElem);
-    if(!nue || !elemNodo)
-    {
+    if (!nue || !elemNodo) {
         free(nue);
         free(elemNodo);
         return NULL;
@@ -233,8 +205,7 @@ Nodo* crearNodo (const void* elem, size_t tamElem)
     return nue;
 }
 
-void destruirNodo (Nodo* nae, void* elem, size_t tamElem)
-{
+void destruirNodo(Nodo* nae, void* elem, size_t tamElem) {
     memcpy(elem, nae->elem, MINIMO(tamElem, nae->tamElem));
     free(nae->elem);
     free(nae);

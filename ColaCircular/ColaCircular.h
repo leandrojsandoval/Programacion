@@ -1,14 +1,13 @@
 #ifndef COLACIRCULAR_H_INCLUDED
 #define COLACIRCULAR_H_INCLUDED
 
+#include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
-#define MINIMO(X,Y) ((X) > (Y)? (Y) : (X))
+#define MINIMO(X, Y) ((X) > (Y) ? (Y) : (X))
 
-typedef struct sNodo
-{
+typedef struct sNodo {
     void* elem;
     size_t tamElem;
     struct sNodo* sig;
@@ -16,15 +15,15 @@ typedef struct sNodo
 
 typedef Nodo* Cola;
 
-void crearCola (Cola* pc);
-bool colaVacia (const Cola* pc);
-bool colaLlena (const Cola* pc, size_t tamElem);
-bool encolar (Cola* pc, const void* elem, size_t tamElem);
-bool desencolar (Cola* pc, void* elem, size_t tamElem);
-bool frenteDeCola (const Cola* pc, void* elem, size_t tamElem);
-void vaciarCola (Cola* pc);
+void crearCola(Cola* pc);
+bool colaVacia(const Cola* pc);
+bool colaLlena(const Cola* pc, size_t tamElem);
+bool encolar(Cola* pc, const void* elem, size_t tamElem);
+bool desencolar(Cola* pc, void* elem, size_t tamElem);
+bool frenteDeCola(const Cola* pc, void* elem, size_t tamElem);
+void vaciarCola(Cola* pc);
 
-Nodo* crearNodo (const void* elem, size_t tamElem);
-void destruirNodo (Nodo* nae, void* elem, size_t tamElem);
+Nodo* crearNodo(const void* elem, size_t tamElem);
+void destruirNodo(Nodo* nae, void* elem, size_t tamElem);
 
-#endif // COLACIRCULAR_H_INCLUDED
+#endif  // COLACIRCULAR_H_INCLUDED
