@@ -97,7 +97,7 @@ void desplazarElementos(int* vector, int* dirSigNumVal, const int* dirFin) {
         *vector++ = *dirSigNumVal++;
 }
 
-/*Ejercicio 23: Desarrollar una funci�n que inserte un elemento en un arreglo de
+/*Ejercicio 23: Desarrollar una funcion que inserte un elemento en un arreglo de
 enteros, ordenado en forma ascendente, de forma de no alterar el orden.*/
 
 int vecInsertarEnOrd(int* vector, int* ce, int capacidad, int dato) {
@@ -143,8 +143,8 @@ int vecCantOcurrencias(int* vector, int ce, int dato) {
 
 /********************** Funciones para vectores desordenados **********************/
 
-/*Ejercicio 22: Desarrollar una funci�n que inserte un elemento en un arreglo
-de enteros, dada la posici�n de inserci�n.*/
+/*Ejercicio 22: Desarrollar una funcion que inserte un elemento en un arreglo
+de enteros, dada la posicion de insercion.*/
 
 int vecInsertarSegunPos(int* vector, int* ce, int capacidad, int dato, int pos) {
     if (*ce > capacidad)
@@ -168,43 +168,37 @@ int vecInsertarSegunPos(int* vector, int* ce, int capacidad, int dato, int pos) 
     return TODO_OK;
 }
 
-/*Ejercicio 24: Desarrollar una funci�n que elimine el elemento que ocupa una
-determinada posici�n de un arreglo de enteros.*/
+/*Ejercicio 24: Desarrollar una funcion que elimine el elemento que ocupa una
+determinada posicion de un arreglo de enteros.*/
 
 bool vecEliminarSegunPos(int* vector, int* ce, int pos) {
     if (pos >= *ce)
         return false;
-
     const int* dirFin = vector + *ce - 1;
     vector += pos;
-
     while (vector < dirFin) {
         *vector = *(vector + 1);
         vector++;
     }
-
     (*ce)--;
     return true;
 }
 
-/*Ejercicio 25: Desarrollar una funci�n que elimine la primera aparici�n de un
+/*Ejercicio 25: Desarrollar una funcion que elimine la primera aparicion de un
 elemento determinado de un arreglo de enteros.*/
 
 bool vecEliminarPrimeraAparicion(int* vector, int* ce, int dato) {
     int* actual = vector;
     const int* dirFin = vector + *ce - 1;
-
     while (actual <= dirFin && *actual != dato)
         actual++;
-
     if (actual > dirFin)
         return false;
-
     vecEliminarSegunPos(actual, ce, 0);
     return true;
 }
 
-/*Ejercicio 26: Desarrollar una funci�n que elimine todas las apariciones de un
+/*Ejercicio 26: Desarrollar una funcion que elimine todas las apariciones de un
 determinado elemento de un arreglo de enteros.*/
 
 int vecEliminarTodasLasApariciones(int* vector, int* ce, int dato) {
@@ -230,19 +224,15 @@ void intercambio(int* vector, int i, int j) {
 }
 
 void quickSort(int* vector, int izquierda, int derecha) {
-    int i, ultimo;
-    if (izquierda >= derecha) {
+    if (izquierda >= derecha)
         return;
-    }
     intercambio(vector, izquierda, (izquierda + derecha) / 2);
-    ultimo = izquierda;
-    for (i = izquierda + 1; i <= derecha; i++) {
-        if (vector[i] < vector[izquierda]) {
+    int ultimo = izquierda;
+    for (int i = izquierda + 1; i <= derecha; i++) {
+        if (vector[i] < vector[izquierda])
             intercambio(vector, ++ultimo, i);
-        }
     }
     intercambio(vector, izquierda, ultimo);
-    /// Recursividad
     quickSort(vector, izquierda, ultimo - 1);
     quickSort(vector, ultimo + 1, derecha);
 }

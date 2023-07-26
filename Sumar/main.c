@@ -4,9 +4,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-// #include "../PilaDinamica/PilaDinamica.h"
-// #include "../PilaEstatica/PilaEstatica.h"
-#include "../PilaCircular/PilaCircular.h"
+// #include "../Bibliotecas/PilaDinamica/PilaDinamica.h"
+// #include "../Bibliotecas/PilaEstatica/PilaEstatica.h"
+#include "../Bibliotecas/PilaCircular/PilaCircular.h"
 
 // Sumar 9947389 57267 --> Poner estos numeros en Project -> Set programs' arguments
 

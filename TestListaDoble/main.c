@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../ListaDoble/ListaDoble.h"
+#include "../Bibliotecas/ListaDoble/ListaDoble.h"
 
 void mostrarEntero(void* elem, void* datosAccion);
 int cmpEnteros(const void* elem1, const void* elem2);

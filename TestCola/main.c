@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-// #include "../ColaDinamica/ColaDinamica.h"
-// #include "../ColaEstatica/ColaEstatica.h"
-#include "../ColaCircular/ColaCircular.h"
+// #include "../Bibliotecas/ColaDinamica/ColaDinamica.h"
+// #include "../Bibliotecas/ColaEstatica/ColaEstatica.h"
+#include "../Bibliotecas/ColaCircular/ColaCircular.h"
 
 #define TAM_CLIENTES 10
 

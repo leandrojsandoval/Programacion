@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../Cadena/Cadena.h"
-#include "../Fecha/Fecha.h"
+#include "../Bibliotecas/Cadena/Cadena.h"
+#include "../Bibliotecas/Fecha/Fecha.h"
 
 #define TODO_OK 0
 

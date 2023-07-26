@@ -1,4 +1,4 @@
-#include "../Generico/Generico.h"
+#include "../Bibliotecas/Generico/Generico.h"
 #include "Vector.h"
 
 int main() {

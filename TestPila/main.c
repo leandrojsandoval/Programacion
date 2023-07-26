@@ -3,9 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// #include "../PilaEstatica/PilaEstatica.h"
-// #include "../PilaDinamica/PilaDinamica.h"
-#include "../PilaCircular/PilaCircular.h"
+// #include "../Bibliotecas/PilaEstatica/PilaEstatica.h"
+// #include "../Bibliotecas/PilaDinamica/PilaDinamica.h"
+#include "../Bibliotecas/PilaCircular/PilaCircular.h"
 
 #define PATH_NUMEROS "numeros.txt"
 #define A_ENTERO(X) (isdigit(X) ? (X) - '0' : (X))

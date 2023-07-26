@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../Arbol/Arbol.h"
+#include "../Bibliotecas/Arbol/Arbol.h"
 
 typedef struct {
     int codigo;

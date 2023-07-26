@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../ListaSimple/Lista.h"
+#include "../Bibliotecas/ListaSimple/Lista.h"
 
 #define PATH_NUMEROS_TXT "Numeros.txt"
 

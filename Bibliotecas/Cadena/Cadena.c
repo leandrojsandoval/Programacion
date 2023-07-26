@@ -166,7 +166,7 @@ int contarVocales(const char* cadena) {
     return cantidadVocales;
 }
 
-/*Desarrollar una funci�n que cuente la cantidad de apariciones de una cadena dentro de otra.*/
+/*Desarrollar una funcion que cuente la cantidad de apariciones de una cadena dentro de otra.*/
 
 int miStrcmpApariciones(const char** cadena1, const char* cadena2) {
     while (*cadena2 && **cadena1 == *cadena2) {
@@ -488,7 +488,7 @@ char* intercambiarCaracteresSegunNumero(char* cadena) {
 
 /*Desofuscar la siguiente lineal de texto:
     linea = "jN jmot k sji sorjdknodrj; ji ouq jmot so omrkdouq nes sjiio. lkksI vjmesA"
-La l�nea fue ofuscada de la siguiente manera:
+La linea fue ofuscada de la siguiente manera:
 
     1.Se identificaron las palabras, bloques de texto compuestos por letras a..z A..Z
     2.Se dieron vuelta las palabras, ej. : hola=>aloh

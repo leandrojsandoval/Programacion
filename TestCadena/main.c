@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../Cadena/Cadena.h"
+#include "../Bibliotecas/Cadena/Cadena.h"
 
 int main() {
     /// Uso de tildes
     system("chcp 1252 >nul");
 
     /// Normalizar
-    char textoOrig[] = "'%$vIvA-$ \t�SpA�a/()/()-";
+    char textoOrig[] = "'%$vIvA-$ \tESpAÑa/()/()-";
     char textoDest[TAM];
 
     normalizarATitulo(textoOrig, textoDest);
@@ -31,7 +31,7 @@ int main() {
     printf("\n%d\n", miAtoi(numero));
 
     /// Palindromo
-    char cadPalindromo[] = "    N�u ,Q .  �e  n";
+    char cadPalindromo[] = "anita LaVa La tInA";
     if (esPalindromo(cadPalindromo))
         puts("Es palindromo");
     else
