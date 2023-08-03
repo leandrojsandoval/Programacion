@@ -1,2 +1,2 @@
 # C-C++
-Proyectos y bibliotecas de la materia Programacion (2009).
+Proyectos e implementacion de bibliotecas de la materia Programacion (2009).
