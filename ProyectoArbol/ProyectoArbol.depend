@@ -1,0 +1,38 @@
+# depslib dependency file v1.0
+1701017840 source:c:\users\leand\desktop\c-cplusplus-main\proyectoarbol\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Arbol.h"
+
+1691036110 c:\users\leand\desktop\c-cplusplus-main\bibliotecas\arbol\arbol.h
+	<math.h>
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1701016678 source:c:\users\leand\desktop\c-cplusplus-main\proyectoarbol\arbol.c
+	"Arbol.h"
+
+1701016663 c:\users\leand\desktop\c-cplusplus-main\proyectoarbol\arbol.h
+	<math.h>
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1701016678 source:c:\users\leand\desktop\nueva carpeta\proyectoarbol\arbol.c
+	"Arbol.h"
+
+1701016663 c:\users\leand\desktop\nueva carpeta\proyectoarbol\arbol.h
+	<math.h>
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1701019412 source:c:\users\leand\desktop\nueva carpeta\proyectoarbol\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Arbol.h"
+

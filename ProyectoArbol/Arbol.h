@@ -109,4 +109,5 @@ Arbol* menorNodoDeArbol(const Arbol* pa);
 bool menorElemNoClaveDeArbol(const Arbol* pa, void* elem, size_t tamElem, Cmp cmp);
 const Arbol* menorNodoNoClaveDeArbol(const Arbol* pa, const Arbol* menor, Cmp cmp);
 
-#endif  // ARBOL_H_INCLUDED
+
+#endif // ARBOL_H_INCLUDED
