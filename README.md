@@ -1,5 +1,5 @@
-# C-C++
-Proyectos e implementacion de bibliotecas de la materia Programacion (2009).
+# Programación
+Proyectos e implementacion de bibliotecas de la materia Programacion (2009). Realizados en el Primer / Segundo Cuatrimestre 2022.
 
 ## Unidad 1 - Arrays y archivos
 * Introducción a la abstracción de datos y ocultamiento de información.
